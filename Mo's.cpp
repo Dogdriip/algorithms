@@ -40,7 +40,7 @@ int main() {
 
     // 쿼리 정렬 : (1) s / sqrt(n) 기준 오름차순 --> 시작 버킷 먼저 오는 순으로
     //            (2) e 기준 오름차순 --> 끝나는게 먼저 오는 순으로
-    sort(Q, Q + m, [](qNode& a, qNode b) {
+    sort(Q, Q + m, [](qNode& a, qNode& b) {
         if (a.s / sz != b.s / sz) return a.s / sz < b.s / sz;
         return a.e < b.e;
     });
@@ -56,23 +56,15 @@ int main() {
     // query[i]가 현재 쿼리, 그냥 s, e가 이전 쿼리
     for (int i = 1; i < m; i++) {
         // 현재 쿼리 s가 이전 쿼리 s보다 크면 --> s를 오른쪽으로 이동하면서 축소
-        while (s < Q[i].s) {
-            Minus(s++);
-        }
+        while (s < Q[i].s) Minus(s++);
         // 현재 쿼리 e가 이전 쿼리 e보다 작으면 --> e를 왼쪽으로 이동하면서 축소
-        while (Q[i].e < e) {
-            Minus(--e);
-        }
+        while (Q[i].e < e) Minus(--e);
 
         // 현재 쿼리 s가 이전 쿼리 s보다 작으면 --> s를 왼쪽으로 이동하면서 확장
-        while (s > Q[i].s) {
-            Plus(--s);
-        }
+        while (s > Q[i].s) Plus(--s);
         // 현재 쿼리 e가 이전 쿼리 e보다 크면 --> e를 오른쪽으로 이동하면서 확장
-        while (Q[i].e > e) {
-            Plus(e++);
-        }
-
+        while (Q[i].e > e)  Plus(e++);
+        
         // i번 쿼리 결과 계산 끝
         res[Q[i].n] = curr;
     }
