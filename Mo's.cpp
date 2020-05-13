@@ -63,7 +63,7 @@ int main() {
         // 현재 쿼리 s가 이전 쿼리 s보다 작으면 --> s를 왼쪽으로 이동하면서 확장
         while (s > Q[i].s) Plus(--s);
         // 현재 쿼리 e가 이전 쿼리 e보다 크면 --> e를 오른쪽으로 이동하면서 확장
-        while (Q[i].e > e)  Plus(e++);
+        while (Q[i].e > e) Plus(e++);
         
         // i번 쿼리 결과 계산 끝
         res[Q[i].n] = curr;
