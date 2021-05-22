@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int par[200001];  // uf
+int parent[200001];  // uf
 
 int Find(int x) {
     if (parent[x] < 0) return x;
