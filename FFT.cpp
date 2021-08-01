@@ -1,4 +1,5 @@
 // 1067 이동
+// https://gist.github.com/shiftpsh/5f1a636995cf4ebbef3633b8800fcc6c
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
